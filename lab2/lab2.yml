@@ -1,0 +1,8 @@
+- hosts: windows
+  tasks:
+
+    - debug:
+        var: ansible_facts
+
+      
+    

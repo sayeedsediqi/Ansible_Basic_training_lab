@@ -1,0 +1,20 @@
+- hosts: windows
+  tasks:
+
+    - name: Ensure configuration file is up to date
+      win_copy:
+        src: files/test-configfile.txt
+        dest: c:\temp\{{ ansible_facts['env']['USERNAME'] }}-test-configfile.txt
+      notify:
+        - Restart spooler
+
+    - name: output a debug message
+      debug:
+        msg: Confirming the order of execution when handlers are requested
+
+  handlers:
+
+    - name: Restart spooler
+      win_service:
+        name: spooler
+        state: restarted

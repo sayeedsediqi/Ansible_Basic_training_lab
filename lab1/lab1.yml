@@ -1,0 +1,14 @@
+- hosts: windows
+  gather_facts: false
+  tasks:
+
+    - name: Gather facts
+      setup:
+      register: show_facts
+
+    - name: Show the facts that have been retrieved
+      debug:
+        var: show_facts
+
+      
+    

@@ -1,0 +1,13 @@
+- hosts: windows
+  tasks:
+    - name: Ensure c:\temp\userid file is created
+      win_file:
+        path: "{{ item }}"
+        state: "{{ state }}"
+      loop:
+        - c:\temp\{{ ansible_facts['env']['USERNAME'] }}-1.txt
+        - c:\temp\{{ ansible_facts['env']['USERNAME'] }}-2.txt
+        - c:\temp\{{ ansible_facts['env']['USERNAME'] }}-3.txt                
+
+      
+    
